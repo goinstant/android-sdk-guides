@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Change the title bar for the connect/disconnect dialogs -->
+    <string name="sos_title">SOS Basic Example</string>
+
+    <!-- Change the drawing color and width -->
+    <color name="sos_drawing_color">#0000ff</color>
+    <integer name="sos_drawing_width">2</integer>
+
+</resources>
