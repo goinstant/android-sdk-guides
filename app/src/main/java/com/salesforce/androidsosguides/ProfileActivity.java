@@ -19,6 +19,8 @@ public class ProfileActivity extends SubActivity {
 
     TextView name = (TextView) findViewById(R.id.contact_name);
     name.setText(contact.name);
+    TextView company = (TextView) findViewById(R.id.company_name);
+    company.setText(contact.company);
   }
 
 }
