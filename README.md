@@ -41,6 +41,7 @@ Each example contains extensive inline documentation explaining each line of cod
 The code in the `main` source tree is shared between all examples. It includes the bulk of the application, including all the activities. The following SOS features are demonstrated in all flavors:
 
 - **Hiding and showing the SOS button**: The SOS button shown in the actionbar on the Contacts, Profiles, and Compose activities will be hidden when the SOS session starts, and shown again when it ends. See the code in `SubActivity.java` to understand how this works.
+- **Masking the message field**: The message field of the Compose activity is masked using the default masking functionality. The field is visible whenever it has focus for editing and is hidden otherwise.
 
 ### Simple
 
