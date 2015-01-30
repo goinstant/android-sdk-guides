@@ -11,8 +11,11 @@
     <string name="action_profile">Profile</string>
 
     <!-- Compose Hints -->
-    <string name="hint_email">Email</string>
+    <string name="hint_email">Email Address</string>
     <string name="hint_subject">Subject</string>
-    <string name="hint_message">Message</string>
+    <string name="hint_message">Say Something</string>
+
+    <string name="send_email">Send Email</string>
+    <string name="email_success">Email sent successfully!</string>
 
 </resources>

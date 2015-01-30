@@ -37,31 +37,15 @@
         android:layout_marginBottom="15dp"
         android:layout_weight="1"/>
 
-    <!--
-    The most direct way to make a masked field is to use the SOS masked equivalent of an
-    existing Android field. Currently, the following maskable fields are available:
-        com.salesforce.android.sos.mask.EditText,
-        com.salesforce.android.sos.mask.AutoCompleteTextView,
-        com.salesforce.android.sos.mask.MultiAutoCompleteTextView,
-        com.salesforce.android.sos.mask.TextView,
-        com.salesforce.android.sos.mask.View
-
-    The first three of these masked-field types are editable and exposing and hiding of those
-    fields is handled automatically whenever the field has focus. It is possible to expose or
-    hide any of the masked fields programmatically.
-
-    Additionally, the actual drawable that acts as the mask (a gray rectangle by default) can
-    be customized with an application-defined drawable asset.
-    -->
-    <com.salesforce.android.sos.mask.EditText
+    <EditText
         android:id="@+id/compose_message"
-        android:background="#00ffffff"
         android:textSize="14sp"
+        android:background="#00ffffff"
         android:hint="@string/hint_message"
         android:inputType="textMultiLine"
         android:gravity="top"
         android:minLines="15"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"/>
+        android:layout_weight="5"/>
 </LinearLayout>

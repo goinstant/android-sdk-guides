@@ -49,7 +49,16 @@ The `simple` flavor shows connecting to an SOS session with no customization. It
 
 ### Basic
 
-The `basic` flavor includes the same simple connection logic from above, but additionally includes an `sos_overrides.xml` file that modifies a subset of the overrideable resources to customize the messaging used in the default dialogs and some of the presentation details for the session, such as the color and width of the agent annotations.
+The `basic` flavor includes the same simple connection logic from above, but with some additions.
+
+##### Overrides
+There is an `sos_overrides.xml` file that modifies a subset of the overrideable resources to customize
+the messaging used in the default dialogs and some of the presentation details for the session,
+such as the color and width of the agent annotations.
+
+##### Capturing Toasts
+In `ComposeActivity` there is code that shows illustrates how a user would capture a Toast and send it
+to the Agent.  Since Toasts live outside of the activity view hierarchy, they are not captured automatically.
 
 ### Advanced
 
