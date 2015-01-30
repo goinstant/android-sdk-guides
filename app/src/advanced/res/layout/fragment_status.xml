@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This layout contains the views that are embedded into the MainActivity during the SOS
+     connecting phase. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal">
+
+    <TextView
+        android:text="@string/connecting_to_sos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- This textview will be used to show the status of the connection. -->
+    <TextView
+        android:id="@+id/fragment_status_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- This button can be used to cancel the connection. -->
+    <Button
+        android:id="@+id/fragment_status_button"
+        android:text="@string/sos_connect_negative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
