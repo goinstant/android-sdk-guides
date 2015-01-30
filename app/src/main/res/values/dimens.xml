@@ -5,6 +5,8 @@
 
     <dimen name="contact_name_size">20sp</dimen>
 
-    <dimen name="profile_name_size">50sp</dimen>
-    <dimen name="profile_company_size">25sp</dimen>
+    <dimen name="profile_name_size">35sp</dimen>
+    <dimen name="profile_company_size">22sp</dimen>
+    <dimen name="profile_period_size">18sp</dimen>
+    <dimen name="profile_thumbnail_margin">6dp</dimen>
 </resources>

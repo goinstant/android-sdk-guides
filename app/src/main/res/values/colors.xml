@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="profile_name">#90B7ED</color>
+    <color name="profile_background">#FFFFFFFF</color>
+    <color name="profile_name">#FF90B7ED</color>
+    <color name="profile_period">#FF808080</color>
 </resources>
