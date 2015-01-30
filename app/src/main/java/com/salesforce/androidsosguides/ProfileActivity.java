@@ -30,18 +30,18 @@ public class ProfileActivity extends SubActivity {
     company.setText(contact.company);
 
     GridView gridViewA = (GridView) findViewById(R.id.thumbnail_grid_a);
-    gridViewA.setAdapter(new ProfileThumbnailAdapter(new int[]{
+    gridViewA.setAdapter(new ProfileThumbnailAdapter(
         R.drawable.profile_thumbnail_001,
         R.drawable.profile_thumbnail_002,
         R.drawable.profile_thumbnail_003,
         R.drawable.profile_thumbnail_004,
         R.drawable.profile_thumbnail_005,
         R.drawable.profile_thumbnail_006
-    }));
+    ));
     gridViewA.getViewTreeObserver().addOnGlobalLayoutListener(new LayoutListener(gridViewA));
 
     GridView gridViewB = (GridView) findViewById(R.id.thumbnail_grid_b);
-    gridViewB.setAdapter(new ProfileThumbnailAdapter(new int[]{
+    gridViewB.setAdapter(new ProfileThumbnailAdapter(
         R.drawable.profile_thumbnail_007,
         R.drawable.profile_thumbnail_008,
         R.drawable.profile_thumbnail_009,
@@ -51,15 +51,15 @@ public class ProfileActivity extends SubActivity {
         R.drawable.profile_thumbnail_013,
         R.drawable.profile_thumbnail_014,
         R.drawable.profile_thumbnail_015
-    }));
+    ));
     gridViewB.getViewTreeObserver().addOnGlobalLayoutListener(new LayoutListener(gridViewB));
 
     GridView gridViewC = (GridView) findViewById(R.id.thumbnail_grid_c);
-    gridViewC.setAdapter(new ProfileThumbnailAdapter(new int[]{
+    gridViewC.setAdapter(new ProfileThumbnailAdapter(
         R.drawable.profile_thumbnail_016,
         R.drawable.profile_thumbnail_017,
         R.drawable.profile_thumbnail_018
-    }));
+    ));
     gridViewC.getViewTreeObserver().addOnGlobalLayoutListener(new LayoutListener(gridViewC));
   }
 

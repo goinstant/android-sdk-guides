@@ -15,7 +15,7 @@ public class ProfileThumbnailAdapter extends BaseAdapter {
 
   private int[] drawableIds;
 
-  public ProfileThumbnailAdapter(int[] drawableIds) {
+  public ProfileThumbnailAdapter(int ... drawableIds) {
     this.drawableIds = drawableIds;
   }
 
