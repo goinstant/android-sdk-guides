@@ -39,4 +39,8 @@ public abstract class BaseActivity extends ActionBarActivity {
 
     return session;
   }
+
+  boolean atleastBasic () {
+    return BuildConfig.FLAVOR.equals("basic") || BuildConfig.FLAVOR.equals("advanced");
+  }
 }
