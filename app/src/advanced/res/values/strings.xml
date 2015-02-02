@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Content for our custom status fragment -->
+    <string name="connecting_to_sos">We\'re connecting you to a service agent.</string>
+
 </resources>
