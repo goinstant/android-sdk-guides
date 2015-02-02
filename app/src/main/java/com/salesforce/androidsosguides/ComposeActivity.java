@@ -47,9 +47,8 @@ public class ComposeActivity extends SubActivity {
 
   @Override
   public boolean onCreateOptionsMenu (Menu menu) {
-    // This activity has a different menu than other activities, so we don't call throught to the super.
     getMenuInflater().inflate(R.menu.menu_compose, menu);
-    return true;
+    return super.onCreateOptionsMenu(menu);
   }
 
   @Override
