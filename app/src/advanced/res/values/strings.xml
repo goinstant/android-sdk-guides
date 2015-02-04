@@ -3,5 +3,6 @@
 
     <!-- Content for our custom status fragment -->
     <string name="connecting_to_sos">We\'re connecting you to a service agent.</string>
+    <string name="masked_field_label">Masked</string>
 
 </resources>
