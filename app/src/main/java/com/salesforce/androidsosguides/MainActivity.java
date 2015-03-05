@@ -7,36 +7,33 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.salesforce.android.sos.api.Sos;
+import com.salesforce.android.sos.api.SosEndReason;
+import com.salesforce.android.sos.api.SosListener;
 import com.salesforce.android.sos.api.SosSession;
-import com.salesforce.android.sos.api.SosSessionListener;
 import com.salesforce.android.sos.api.SosState;
 
 
-public class MainActivity extends BaseActivity implements SosSessionListener {
+public class MainActivity extends BaseActivity implements SosListener {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+    Sos.addListener(this);
+
     if (Sos.isSessionActive()) {
       // Hide the SOS button if there is an existing session.
       View view = findViewById(R.id.start_sos_button);
       view.setVisibility(View.GONE);
-
-      // Add ourselves as a listener so that we can re-show it when the session is done.
-      Sos.getActiveSession().addListener(this);
     }
   }
 
   @Override
   protected void onDestroy() {
-    super.onDestroy();
+    Sos.removeListener(this);
 
-    // Always remove listeners from an existing session so that they are not leaked.
-    if (Sos.isSessionActive()) {
-      Sos.getActiveSession().removeListener(this);
-    }
+    super.onDestroy();
   }
 
   @Override
@@ -67,20 +64,23 @@ public class MainActivity extends BaseActivity implements SosSessionListener {
   }
 
   public void startSos(View view) {
-    // Hide our SOS button when the session starts.
-    view.setVisibility(View.GONE);
-
-    // Add ourselves as a listener so we can re-show it when the session ends.
-    SosSession session = startSos();
-    session.addListener(this);
+    startSos();
   }
 
   @Override
-  public void stateChanged(SosState state, SosState oldState) {
-    // Show our SOS button when the session ends.
-    if (state == SosState.Disconnected) {
-      View view = findViewById(R.id.start_sos_button);
-      view.setVisibility(View.VISIBLE);
-    }
+  public void onSessionCreated(SosSession session) {
+    View view = findViewById(R.id.start_sos_button);
+    view.setVisibility(View.GONE);
+  }
+
+  @Override
+  public void onSessionEnded(SosSession session, SosEndReason sosEndReason) {
+    View view = findViewById(R.id.start_sos_button);
+    view.setVisibility(View.VISIBLE);
+  }
+
+  @Override
+  public void onSessionStateChange(SosSession session, SosState state, SosState state2) {
+
   }
 }

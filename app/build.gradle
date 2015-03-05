@@ -41,11 +41,11 @@ android {
 }
 
 repositories {
-    maven { url 'http://cdn.goinstant.net/mobile/android/sos/snapshot' }
+    maven { url 'http://sos.goinstant.net/android/maven/sos/sdk/release' }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.salesforce.android:sos:0.10.1-SNAPSHOT'
+    compile 'com.salesforce.android:sos:0.12.0'
 }

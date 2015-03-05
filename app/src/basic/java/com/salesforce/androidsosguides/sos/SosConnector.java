@@ -25,7 +25,7 @@ public class SosConnector {
     SosConfiguration configuration =
         new SosConfiguration.Builder().backend(SosConfiguration.Backend.GA).build();
 
-    return Sos.startSession(activity, options);
+    return Sos.session(activity, options).configuration(configuration).start();
   }
 
 }
