@@ -29,7 +29,7 @@ public class SosConnector {
     // Override the dialog presenter logic with our custom class.
     SosDialogPresenter presenter = new ExampleDialogPresenter();
 
-    return Sos.startSession(activity, options, presenter, configuration);
+    return Sos.session(activity, options).configuration(configuration).dialogs(presenter).start();
   }
 
 }

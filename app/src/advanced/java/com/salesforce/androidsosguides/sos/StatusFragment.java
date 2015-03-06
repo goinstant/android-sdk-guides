@@ -19,14 +19,14 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
 
   private View view;
   private String message;
-  private SosDialogPresenter.Callback callback;
+  private SosDialogPresenter.OnSelectionListener listener;
 
-  public static StatusFragment newInstance(String message, SosDialogPresenter.Callback callback) {
+  public static StatusFragment newInstance(String message, SosDialogPresenter.OnSelectionListener listener) {
     StatusFragment fragment = new StatusFragment();
 
     Bundle args = new Bundle();
     args.putString("message", message);
-    args.putSerializable("callback", callback);
+    args.putSerializable("listener", listener);
     fragment.setArguments(args);
 
     return fragment;
@@ -44,8 +44,8 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
       message = getArguments().getString("message");
     }
 
-    // Read the callback from the fragment arguments.
-    callback = (SosDialogPresenter.Callback) getArguments().get("callback");
+    // Read the listener from the fragment arguments.
+    listener = (SosDialogPresenter.OnSelectionListener) getArguments().get("listener");
   }
 
   @Override
@@ -71,8 +71,8 @@ public class StatusFragment extends Fragment implements View.OnClickListener {
   @Override
   public void onClick(View v) {
     // When the user clicks the button, tell the SOS framework that they chose to cancel the
-    // connection by calling the provided callback.
-    callback.complete(SosDialogPresenter.Type.CONNECTING_STATUS, false, getActivity());
+    // connection by calling the provided listener.
+    listener.onSelectionMade(SosDialogPresenter.Type.CONNECTING_STATUS, false, getActivity());
   }
 
   public void setMessage(String message) {

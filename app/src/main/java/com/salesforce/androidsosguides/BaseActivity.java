@@ -7,6 +7,8 @@ import com.salesforce.android.sos.api.SosSession;
 import com.salesforce.androidsosguides.sos.SosConnector;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -25,10 +27,14 @@ public abstract class BaseActivity extends ActionBarActivity {
       throw new RuntimeException("Unable to open properties file", e);
     }
 
+    // You could fill this map with any custom data your application wants to pass along to the
+    // service agent.
+    Map<String, String> customData = new HashMap<>();
+
     // Pull the information from the properties file and use it to instantiate the SosOptions needed
     // to start the session.
     SosOptions options = new SosOptions(
-        properties.getProperty("email", "lauren@example.com"),
+        customData,
         properties.getProperty("liveagent_pod", "la-1.d.salesforce.com"),
         properties.getProperty("organization_id", "1234567890abcde"),
         properties.getProperty("deployment_id", "abcde1234567890")
@@ -40,7 +46,7 @@ public abstract class BaseActivity extends ActionBarActivity {
     return session;
   }
 
-  boolean atleastBasic () {
+  boolean atleastBasic() {
     return BuildConfig.FLAVOR.equals("basic") || BuildConfig.FLAVOR.equals("advanced");
   }
 }

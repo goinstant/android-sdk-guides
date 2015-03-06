@@ -18,26 +18,26 @@ public class ExampleDialogPresenter extends SosDefaultDialogPresenter {
    * @{inheritDoc}
    */
   @Override
-  public void show(Type type, Activity activity, Callback callback) {
+  public void show(Type type, Activity activity, OnSelectionListener listener) {
 
     // Suppress the disconnect dialog by immediately calling the callback when it is asked to be
     // shown. This results in the session ending immediately when the user hits the close button.
     // Be careful to ensure that the correct values are passed to the callback; passing false for
     // the "positive" argument here would result in the user being unable to end the session.
     if (type == Type.DISCONNECT_PROMPT) {
-      callback.complete(type, true, activity);
+      listener.onSelectionMade(type, true, activity);
       return;
     }
 
     // Use a custom fragment to show the connection status UI on the main activity only. Other
     // activities will use the default logic.
     if (type == Type.CONNECTING_STATUS && activity instanceof MainActivity) {
-      showCustomFragment(activity, callback);
+      showCustomFragment(activity, listener);
       return;
     }
 
     // Call through to the default logic for all other dialog types.
-    super.show(type, activity, callback);
+    super.show(type, activity, listener);
   }
 
   /**
@@ -72,12 +72,12 @@ public class ExampleDialogPresenter extends SosDefaultDialogPresenter {
 
   // Custom fragment methods.
 
-  private void showCustomFragment(Activity activity, Callback callback) {
+  private void showCustomFragment(Activity activity, OnSelectionListener listener) {
     // Get the message from the type.
     String message = Type.CONNECTING_STATUS.getMessage(activity);
 
     // Instantiate the fragment we're going to be showing.
-    StatusFragment fragment = StatusFragment.newInstance(message, callback);
+    StatusFragment fragment = StatusFragment.newInstance(message, listener);
 
     // Add the fragment to the activity.
     activity.getFragmentManager().beginTransaction()

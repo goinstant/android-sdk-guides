@@ -6,8 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.salesforce.android.sos.api.Sos;
+import com.salesforce.android.sos.api.SosEndReason;
+import com.salesforce.android.sos.api.SosListener;
 import com.salesforce.android.sos.api.SosSession;
-import com.salesforce.android.sos.api.SosSessionListener;
 import com.salesforce.android.sos.api.SosState;
 
 /**
@@ -20,13 +21,12 @@ import com.salesforce.android.sos.api.SosState;
  * <ol>
  * <li>Check for an existing session when creating the button. A session may have been started by
  * a previous activity in your application. Hide the button if there is an active session.</li>
- * <li>Hide the button when its used to start a new session.</li>
- * <li>Add the activity as a listener to the session, and show the button when the session state
- * changes to DISCONNECTED, indicating the session has ended.</li>
+ * <li>Hide the button when a new session starts.</li>
+ * <li>Show the button when a session ends.</li>
  * <li>Make sure to remove the activity as a listener when it is destroyed.</li>
  * </ol>
  */
-public abstract class SubActivity extends BaseActivity implements SosSessionListener {
+public abstract class SubActivity extends BaseActivity implements SosListener {
 
   private Menu menu;
 
@@ -41,12 +41,11 @@ public abstract class SubActivity extends BaseActivity implements SosSessionList
   public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.menu_sub, menu);
 
-    if (Sos.isSessionActive()) {
-      // Add this activity as a listener for the existing SOS session. This will allow us to
-      // re-show the
-      Sos.getActiveSession().addListener(this);
+    // Add this activity as a listener so that it will hide or show the SOS action bar icon as needed.
+    Sos.addListener(this);
 
-      // Hide the SOS button since we already have an existing session.
+    if (Sos.isSessionActive()) {
+      // Hide the SOS action bar icon since we already have an existing session.
       menu.findItem(R.id.action_sos).setVisible(false);
     }
 
@@ -70,38 +69,24 @@ public abstract class SubActivity extends BaseActivity implements SosSessionList
   protected void onDestroy() {
     super.onDestroy();
 
-    // Always remove ourselves as listeners from the active session. This ensures that the Activity
-    // reference is not leaked. You only need to remove a listener from sessions that are active,
-    // sessions that end will automatically remove all their listeners.
-    if (Sos.isSessionActive()) {
-      Sos.getActiveSession().removeListener(this);
-    }
+    // Always remove ourselves as a listener. This ensures that the Activity reference is not leaked.
+    Sos.removeListener(this);
   }
 
   @Override
-  public SosSession startSos() {
-    SosSession session = super.startSos();
-
-    // Hide the button used to start the session.
+  public void onSessionCreated(SosSession session) {
+    // Hide the action bar icon when the session starts.
     menu.findItem(R.id.action_sos).setVisible(false);
-
-    // Add this activity as a listener for the new session so that we can re-show the button when
-    // it's over.
-    session.addListener(this);
-
-    return session;
   }
 
-  /**
-   * Handle state changes in the SOS session.
-   *
-   * @param state    The new state of the session.
-   * @param oldState The old state of the session.
-   */
   @Override
-  public void stateChanged(SosState state, SosState oldState) {
-    // Update the visibility of the SOS button based on the state of the session.
-    menu.findItem(R.id.action_sos).setVisible(state == SosState.Disconnected);
+  public void onSessionEnded(SosSession session, SosEndReason sosEndReason) {
+    // Show the action bar icon when the session ends.
+    menu.findItem(R.id.action_sos).setVisible(true);
   }
 
+  @Override
+  public void onSessionStateChange(SosSession session, SosState state, SosState state2) {
+
+  }
 }
