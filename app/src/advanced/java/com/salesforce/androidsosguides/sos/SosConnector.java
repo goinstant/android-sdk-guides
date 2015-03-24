@@ -3,7 +3,6 @@ package com.salesforce.androidsosguides.sos;
 import android.app.Activity;
 
 import com.salesforce.android.sos.api.Sos;
-import com.salesforce.android.sos.api.SosConfiguration;
 import com.salesforce.android.sos.api.SosDialogPresenter;
 import com.salesforce.android.sos.api.SosOptions;
 import com.salesforce.android.sos.api.SosSession;
@@ -22,14 +21,10 @@ public class SosConnector {
    * @return The new SosSession instance.
    */
   public static SosSession startSession(Activity activity, SosOptions options) {
-    // Talk to the backend that will be used when SOS becomes generally available.
-    SosConfiguration configuration =
-        new SosConfiguration.Builder().backend(SosConfiguration.Backend.GA).build();
-
     // Override the dialog presenter logic with our custom class.
     SosDialogPresenter presenter = new ExampleDialogPresenter();
 
-    return Sos.session(activity, options).configuration(configuration).dialogs(presenter).start();
+    return Sos.session(activity, options).dialogs(presenter).start();
   }
 
 }
