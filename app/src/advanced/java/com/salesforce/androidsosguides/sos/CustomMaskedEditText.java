@@ -14,7 +14,7 @@ import com.salesforce.androidsosguides.R;
  * augment it with some text. The onDraw method will be called each time tha the field is
  * updated, whether it is masked or not.
  */
-public class CustomMaskedEditText extends com.salesforce.android.sos.mask.EditText {
+public class CustomMaskedEditText extends com.salesforce.android.sos.maskview.EditText {
 
   public CustomMaskedEditText(Context context, AttributeSet attrs, int defStyle) {
     super(context, attrs, defStyle);
