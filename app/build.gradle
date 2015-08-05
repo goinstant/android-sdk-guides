@@ -41,11 +41,11 @@ android {
 }
 
 repositories {
-    maven { url 'http://sos.goinstant.net/android/maven/sos/sdk/release' }
+    maven { url 'http://s3.amazonaws.com/salesforcesos.com/android/maven/sos/sdk/release' }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.salesforce.android:sos:0.18.0'
+    compile 'com.salesforce.android:sos:0.20.0'
 }
