@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.salesforce.androidsosguides"
-        minSdkVersion 15
+        minSdkVersion 14
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
@@ -47,5 +47,5 @@ repositories {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.salesforce.android:sos:0.21.0'
+    compile 'com.salesforce.android:sos:0.21.2'
 }
