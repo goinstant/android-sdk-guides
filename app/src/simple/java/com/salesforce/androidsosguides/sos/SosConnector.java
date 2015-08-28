@@ -4,7 +4,6 @@ import android.app.Activity;
 
 import com.salesforce.android.sos.api.Sos;
 import com.salesforce.android.sos.api.SosOptions;
-import com.salesforce.android.sos.api.SosSession;
 
 /**
  * This class contains all the logic for starting an SOS session in the simple flavor: with no
@@ -19,8 +18,8 @@ public class SosConnector {
    * @param options  The information needed to start the session.
    * @return The new SosSession instance.
    */
-  public static SosSession startSession(Activity activity, SosOptions options) {
-    return Sos.session(activity, options).start();
+  public static void startSession(Activity activity, SosOptions options) {
+    Sos.session(options).start(activity);
   }
 
 }

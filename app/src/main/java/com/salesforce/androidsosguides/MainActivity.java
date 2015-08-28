@@ -9,7 +9,6 @@ import android.view.View;
 import com.salesforce.android.sos.api.Sos;
 import com.salesforce.android.sos.api.SosEndReason;
 import com.salesforce.android.sos.api.SosListener;
-import com.salesforce.android.sos.api.SosSession;
 import com.salesforce.android.sos.api.SosState;
 
 
@@ -68,19 +67,19 @@ public class MainActivity extends BaseActivity implements SosListener {
   }
 
   @Override
-  public void onSessionCreated(SosSession session) {
+  public void onSessionCreated() {
     View view = findViewById(R.id.start_sos_button);
     view.setVisibility(View.GONE);
   }
 
   @Override
-  public void onSessionEnded(SosSession session, SosEndReason sosEndReason) {
+  public void onSessionEnded(SosEndReason sosEndReason) {
     View view = findViewById(R.id.start_sos_button);
     view.setVisibility(View.VISIBLE);
   }
 
   @Override
-  public void onSessionStateChange(SosSession session, SosState state, SosState state2) {
+  public void onSessionStateChange(SosState state, SosState state2) {
 
   }
 }
