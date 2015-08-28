@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import com.salesforce.android.sos.api.Sos;
 import com.salesforce.android.sos.api.SosEndReason;
 import com.salesforce.android.sos.api.SosListener;
-import com.salesforce.android.sos.api.SosSession;
 import com.salesforce.android.sos.api.SosState;
 
 /**
@@ -74,19 +73,19 @@ public abstract class SubActivity extends BaseActivity implements SosListener {
   }
 
   @Override
-  public void onSessionCreated(SosSession session) {
+  public void onSessionCreated() {
     // Hide the action bar icon when the session starts.
     menu.findItem(R.id.action_sos).setVisible(false);
   }
 
   @Override
-  public void onSessionEnded(SosSession session, SosEndReason sosEndReason) {
+  public void onSessionEnded(SosEndReason sosEndReason) {
     // Show the action bar icon when the session ends.
     menu.findItem(R.id.action_sos).setVisible(true);
   }
 
   @Override
-  public void onSessionStateChange(SosSession session, SosState state, SosState state2) {
+  public void onSessionStateChange(SosState state, SosState state2) {
 
   }
 }

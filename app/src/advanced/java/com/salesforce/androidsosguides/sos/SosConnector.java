@@ -5,7 +5,6 @@ import android.app.Activity;
 import com.salesforce.android.sos.api.Sos;
 import com.salesforce.android.sos.api.SosDialogPresenter;
 import com.salesforce.android.sos.api.SosOptions;
-import com.salesforce.android.sos.api.SosSession;
 
 /**
  * This class contains all the logic for starting an SOS session in the advanced flavor: with custom
@@ -20,11 +19,11 @@ public class SosConnector {
    * @param options  The information needed to start the session.
    * @return The new SosSession instance.
    */
-  public static SosSession startSession(Activity activity, SosOptions options) {
+  public static void startSession(Activity activity, SosOptions options) {
     // Override the dialog presenter logic with our custom class.
     SosDialogPresenter presenter = new ExampleDialogPresenter();
 
-    return Sos.session(activity, options).dialogs(presenter).start();
+    Sos.session(options).dialogs(presenter).start(activity);
   }
 
 }
