@@ -40,8 +40,4 @@ public abstract class BaseActivity extends AppCompatActivity {
     // Start the session using the constructed options, using the flavor-specific logic.
     SosConnector.startSession(this, options);
   }
-
-  boolean atleastBasic() {
-    return BuildConfig.FLAVOR.equals("basic") || BuildConfig.FLAVOR.equals("advanced");
-  }
 }

@@ -37,6 +37,12 @@ android {
         advanced {
 
         }
+
+        // The field service flavor demonstrates using SOS in field services mode, where only the
+        // cameras are available.
+        fieldService {
+            
+        }
     }
 }
 
