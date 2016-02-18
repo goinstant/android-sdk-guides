@@ -1,8 +1,17 @@
 package com.salesforce.androidsosguides;
 
-import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
+import android.support.annotation.IdRes;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -14,6 +23,8 @@ import com.salesforce.android.sos.api.SosState;
 
 public class MainActivity extends BaseActivity implements SosListener {
 
+  private DrawerLayout mDrawerLayout;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -21,65 +32,107 @@ public class MainActivity extends BaseActivity implements SosListener {
 
     Sos.addListener(this);
 
-    if (Sos.isSessionActive()) {
-      // Hide the SOS button if there is an existing session.
-      View view = findViewById(R.id.start_sos_button);
-      view.setVisibility(View.GONE);
+    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+
+    ActionBar actionBar = getSupportActionBar();
+    if (actionBar != null) {
+      actionBar.setDisplayHomeAsUpEnabled(true);
+      actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
     }
+
+    mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+    NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+    navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+      @Override
+      public boolean onNavigationItemSelected(MenuItem item) {
+        item.setChecked(true);
+        switchFragment(item.getItemId());
+        mDrawerLayout.closeDrawers();
+        return true;
+      }
+    });
+
+    // Setup the FloatingActionButton which will start an SOS session.
+    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.start_sos);
+    fab.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startSos();
+      }
+    });
+
+    if (Sos.isSessionActive()) {
+      disableFab();
+    }
+
+    switchFragment(R.id.nav_contacts);
   }
 
   @Override
   protected void onDestroy() {
     Sos.removeListener(this);
-
     super.onDestroy();
   }
 
   @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_main, menu);
-    return true;
-  }
-
-  @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    int id = item.getItemId();
-
-    if (id == R.id.action_contacts) {
-      Intent intent = new Intent(this, ContactsActivity.class);
-      startActivity(intent);
-      return true;
-    } else if (id == R.id.action_compose) {
-      Intent intent = new Intent(this, ComposeActivity.class);
-      startActivity(intent);
-      return true;
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        mDrawerLayout.openDrawer(GravityCompat.START);
+        return true;
     }
-
     return super.onOptionsItemSelected(item);
-  }
-
-  public void startSos(View view) {
-    startSos();
   }
 
   @Override
   public void onSessionCreated() {
-    View view = findViewById(R.id.start_sos_button);
-    view.setVisibility(View.GONE);
+    disableFab();
   }
 
   @Override
   public void onSessionEnded(SosEndReason sosEndReason) {
-    View view = findViewById(R.id.start_sos_button);
-    view.setVisibility(View.VISIBLE);
+    enableFab();
   }
 
   @Override
   public void onSessionStateChange(SosState state, SosState state2) {
 
+  }
+
+  private void disableFab() {
+    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.start_sos);
+
+    TypedValue typedValue = new TypedValue();
+    getTheme().resolveAttribute(R.attr.colorAccent, typedValue, true);
+    int fabColor = typedValue.data;
+
+    fab.setColorFilter(Color.argb(128, Color.red(fabColor), Color.green(fabColor), Color.blue(fabColor)));
+    fab.setEnabled(false);
+  }
+
+  private void enableFab() {
+    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.start_sos);
+    fab.clearColorFilter();
+    fab.setEnabled(true);
+  }
+
+  private void switchFragment(@IdRes int menuItem) {
+    Fragment fragment;
+
+    switch (menuItem) {
+      case R.id.nav_compose:
+        fragment = new ComposeFragment();
+        break;
+      case R.id.nav_contacts:
+      default:
+        fragment = new ContactsFragment();
+        break;
+    }
+
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    transaction.replace(R.id.fragment_container, fragment);
+    transaction.commit();
   }
 }

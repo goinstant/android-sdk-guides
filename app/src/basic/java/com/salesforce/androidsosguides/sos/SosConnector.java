@@ -16,7 +16,6 @@ public class SosConnector {
    *
    * @param activity The activity that is starting the session.
    * @param options  The information needed to start the session.
-   * @return The new SosSession instance.
    */
   public static void startSession(Activity activity, SosOptions options) {
     Sos.session(options).start(activity);

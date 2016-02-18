@@ -3,4 +3,5 @@
     <color name="profile_background">#FFFFFFFF</color>
     <color name="profile_name">#FF90B7ED</color>
     <color name="profile_period">#FF808080</color>
+    <color name="window_background">#FFF5F5F5</color>
 </resources>

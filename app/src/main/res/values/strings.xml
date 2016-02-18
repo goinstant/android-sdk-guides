@@ -2,20 +2,14 @@
 <resources>
 
     <string name="app_name">Android SOS Guides</string>
-    <string name="start_sos">Start an SOS session</string>
-
-    <!-- Action Bar Items -->
-    <string name="action_sos">SOS</string>
-    <string name="action_contacts">Contacts</string>
-    <string name="action_compose">Compose</string>
-    <string name="action_profile">Profile</string>
 
     <!-- Compose Hints -->
     <string name="hint_email">Email Address</string>
     <string name="hint_subject">Subject</string>
     <string name="hint_message">Say Something</string>
+    <string name="send">Send Email</string>
 
-    <string name="send_email">Send Email</string>
-    <string name="email_success">Email sent successfully!</string>
-
+    <string name="title_contacts">Contacts</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_compose">Compose</string>
 </resources>
