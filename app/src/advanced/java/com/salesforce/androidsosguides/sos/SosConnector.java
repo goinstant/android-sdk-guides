@@ -3,6 +3,7 @@ package com.salesforce.androidsosguides.sos;
 import android.app.Activity;
 
 import com.salesforce.android.sos.api.Sos;
+import com.salesforce.android.sos.api.SosConfiguration;
 import com.salesforce.android.sos.api.SosDialogPresenter;
 import com.salesforce.android.sos.api.SosOptions;
 
@@ -23,7 +24,12 @@ public class SosConnector {
     // Override the dialog presenter logic with our custom class.
     SosDialogPresenter presenter = new ExampleDialogPresenter();
 
-    Sos.session(options).dialogs(presenter).start(activity);
+    // Enable the Halo UI.
+    SosConfiguration configuration = SosConfiguration.builder()
+            .haloUi(true)
+            .build();
+
+    Sos.session(options).dialogs(presenter).configuration(configuration).start(activity);
   }
 
 }

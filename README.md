@@ -68,6 +68,8 @@ The `advanced` flavor includes some of the basic configuration done in the above
 - Bypass the disconnection confirmation prompt (the user will not be prompted when choosing to disconnect).
 - Use a snackbar for showing the connection status on the MainActivity.
 
+The Advanced flavor also uses the new Halo UI, which is currently in beta.
+
 ### FieldServices
 
 The `fieldServices` flavor launches SOS in field service mode, with no other customization.
