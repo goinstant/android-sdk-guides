@@ -23,12 +23,13 @@ placeholders which will result in an error if used to start a session.
 ### Organization and Flavors
 
 The `Android SOS Guides` project is organized into a main tree, which contains
-the bulk of the application, as well as SOS-specific files split into three
+the bulk of the application, as well as SOS-specific files split into four
 flavors:
 
 - `simple`: The `simple` flavor demonstrates connecting to an SOS session with the minimum possible amount of integration. There is no customization of the built-in SOS experience.
 - `basic`: The `basic` flavor demonstrates some basic configuration of the SOS experience using resource files to override the resources present in the SOS library. This is an easy mechanism for changing the default content without affecting behaviour.
 - `advanced`: The `advanced` flavor demonstrates replacing some portions of the SOS logic with custom code. This gives the application greater freedom to customize the SOS experience, but has a higher integration cost and increased level of responsibility for the application developer.
+- `fieldServices`: The `fieldServices` flavor launches the SOS session in field services mode, where only the front and back cameras are available (no screen sharing).
 
 Change the build variant from within Android Studio to edit or run the different flavors.
 
@@ -40,7 +41,7 @@ Each example contains extensive inline documentation explaining each line of cod
 
 The code in the `main` source tree is shared between all examples. It includes the bulk of the application, including all the activities. The following SOS features are demonstrated in all flavors:
 
-- **Hiding and showing the SOS button**: The SOS button shown in the actionbar on the Contacts, Profiles, and Compose activities, and the main content of the main activity, will be hidden when the SOS session starts, and shown again when it ends. See the code in `SubActivity.java` or `MainActivity.java` to understand how this works.
+- **Enabling and disabling the SOS button**: The `FloatingActionButton` that is used to launch SOS is disabled during the SOS session. See `MainActivity.java` to understand how this works.
 - **Masking the message field**: The message field of the Compose activity is masked using the default masking functionality. The field is visible whenever it has focus for editing and is hidden otherwise.
 
 ### Simple
@@ -57,7 +58,7 @@ the messaging used in the default dialogs and some of the presentation details f
 such as the color and width of the agent annotations.
 
 ##### Capturing Toasts
-In `ComposeActivity` there is code that shows illustrates how a user would capture a Toast and send it
+In `ComposeFragment` there is code that shows illustrates how a user would capture a Toast and send it
 to the Agent.  Since Toasts live outside of the activity view hierarchy, they are not captured automatically.
 
 ### Advanced
@@ -65,4 +66,8 @@ to the Agent.  Since Toasts live outside of the activity view hierarchy, they ar
 The `advanced` flavor includes some of the basic configuration done in the above example, as well as more advanced configuration in the `SosConnector` class. This example overrides some of the dialog presentation logic in order to:
 
 - Bypass the disconnection confirmation prompt (the user will not be prompted when choosing to disconnect).
-- Use a custom view for showing the connection status on the MainActivity.
+- Use a snackbar for showing the connection status on the MainActivity.
+
+### FieldServices
+
+The `fieldServices` flavor launches SOS in field service mode, with no other customization.

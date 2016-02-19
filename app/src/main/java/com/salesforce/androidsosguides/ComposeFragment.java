@@ -8,7 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.salesforce.android.sos.api.Sos;
 
 public class ComposeFragment extends Fragment {
 
@@ -40,6 +44,21 @@ public class ComposeFragment extends Fragment {
     if (actionBar != null) {
       actionBar.setTitle(R.string.title_compose);
     }
+
+    // Show a toast when the send button is clicked.
+    Button sendButton = (Button) view.findViewById(R.id.button_send);
+    sendButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Toast toast = Toast.makeText(getContext(), R.string.email_sent, Toast.LENGTH_SHORT);
+        toast.show();
+
+        if (GuidesApplication.atleastBasic()) {
+          // Pass the toast to SOS so that it is captured and visible to the agent.
+          Sos.captureExtra(toast);
+        }
+      }
+    });
 
     return view;
   }
