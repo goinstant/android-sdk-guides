@@ -33,7 +33,7 @@ android {
         }
 
         // The advanced flavor demonstrates more involved customization including replacing portions
-        // of logic for a more tightly integrated experience.
+        // of logic and color branding for a more tightly integrated experience.
         advanced {
 
         }

@@ -20,14 +20,15 @@ public class SosConnector {
    * @param options  The information needed to start the session.
    * @return The new SosSession instance.
    */
-  public static void startSession(Activity activity, SosOptions options) {
+  public static void startSession (Activity activity, SosOptions options) {
     // Override the dialog presenter logic with our custom class.
     SosDialogPresenter presenter = new ExampleDialogPresenter();
 
     // Enable the Halo UI.
     SosConfiguration configuration = SosConfiguration.builder()
-            .haloUi(true)
-            .build();
+        .onboardingUi(true)
+        .haloUi(true)
+        .build();
 
     Sos.session(options).dialogs(presenter).configuration(configuration).start(activity);
   }
