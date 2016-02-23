@@ -33,15 +33,21 @@ android {
         }
 
         // The advanced flavor demonstrates more involved customization including replacing portions
-        // of logic for a more tightly integrated experience.
+        // of logic and color branding for a more tightly integrated experience.
         advanced {
+
+        }
+
+        // The two-way video flavour allows the user to transition from a screen sharing session
+        // to a video call session by exposing a Camera button on the Halo UI.
+        twoWayVideo {
 
         }
 
         // The field service flavor demonstrates using SOS in field services mode, where only the
         // cameras are available.
         fieldService {
-            
+
         }
     }
 }

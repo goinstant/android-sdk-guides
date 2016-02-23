@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Color customization -->
+
+    <color doc="Used as the button background color for the buttons around the agent container."
+           name="sos_contrast_primary">#333333</color>
+
+    <color doc="Color used for buttons around the agent container that have been selected."
+           name="sos_feedback_primary">#ED971F</color>
+
     <!-- Change the drawing color and width -->
+
     <color name="sos_drawing_color">#0000ff</color>
+
     <integer name="sos_drawing_width">2</integer>
 </resources>

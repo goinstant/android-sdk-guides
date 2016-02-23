@@ -4,12 +4,10 @@ import android.app.Activity;
 
 import com.salesforce.android.sos.api.Sos;
 import com.salesforce.android.sos.api.SosConfiguration;
-import com.salesforce.android.sos.api.SosDialogPresenter;
 import com.salesforce.android.sos.api.SosOptions;
 
 /**
- * This class contains all the logic for starting an SOS session in the advanced flavor: with custom
- * logic used to replace default SOS behaviour.
+ * This class contains all the logic for starting an SOS session in the two-way video flavor.
  */
 public class SosConnector {
 
@@ -21,16 +19,14 @@ public class SosConnector {
    * @return The new SosSession instance.
    */
   public static void startSession (Activity activity, SosOptions options) {
-    // Override the dialog presenter logic with our custom class.
-    SosDialogPresenter presenter = new ExampleDialogPresenter();
-
-    // Enable the Halo UI.
+    // Enable the Halo UI with Two-way Video
     SosConfiguration configuration = SosConfiguration.builder()
         .onboardingUi(true)
         .haloUi(true)
+        .twoWayVideo(true)
         .build();
 
-    Sos.session(options).dialogs(presenter).configuration(configuration).start(activity);
+    Sos.session(options).configuration(configuration).start(activity);
   }
 
 }
