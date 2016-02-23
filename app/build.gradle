@@ -38,10 +38,16 @@ android {
 
         }
 
+        // The two-way video flavour allows the user to transition from a screen sharing session
+        // to a video call session by exposing a Camera button on the Halo UI.
+        twoWayVideo {
+
+        }
+
         // The field service flavor demonstrates using SOS in field services mode, where only the
         // cameras are available.
         fieldService {
-            
+
         }
     }
 }

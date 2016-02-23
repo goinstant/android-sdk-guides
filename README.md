@@ -70,6 +70,10 @@ The `advanced` flavor includes some of the basic configuration done in the above
 
 The Advanced flavor also uses the new Halo UI, which is currently in beta.
 
+### Two-way Camera
+
+The `twoWayCamera` flavor includes the Halo UI with the addition of the camera toggle button. This allows the user to escalate a screen-sharing session to a video call.
+
 ### FieldServices
 
-The `fieldServices` flavor launches SOS in field service mode, with no other customization.
+The `fieldServices` flavor launches SOS in field service (camera-only) mode, with no other customization.
