@@ -68,9 +68,9 @@ The `advanced` flavor includes some of the basic configuration done in the above
 
 The Advanced flavor uses the new Halo UI, which is currently in beta, and overrides more XML color resources for complete branding customization.
 
-### Two-way Camera
+### Two-way Video
 
-The `twoWayCamera` flavor includes the Halo UI with the addition of the camera toggle button. This allows the user to escalate a screen-sharing session to a video call.
+The `twoWayVideo` flavor includes the Halo UI with the addition of the camera toggle button. This allows the user to escalate a screen-sharing session to a video call.
 
 ### FieldServices
 
