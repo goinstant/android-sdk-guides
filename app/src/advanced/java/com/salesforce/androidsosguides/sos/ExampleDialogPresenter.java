@@ -19,17 +19,21 @@ import java.lang.ref.WeakReference;
 public class ExampleDialogPresenter extends SosDefaultDialogPresenter {
   static WeakReference<Snackbar> sSnackbar = new WeakReference<>(null);
 
+
+
   /**
-   * @{inheritDoc}
+   * {@inheritDoc}
    */
   @Override
-  public void show(Type type, Activity activity, OnSelectionListener listener) {
+  public void show (Type type, Activity activity, OnSelectionListener listener) {
 
-    // Suppress the disconnect dialog by immediately calling the callback when it is asked to be
-    // shown. This results in the session ending immediately when the user hits the close button.
-    // Be careful to ensure that the correct values are passed to the callback; passing false for
-    // the "positive" argument here would result in the user being unable to end the session.
-    if (type == Type.DISCONNECT_PROMPT) {
+    // Suppress the connect prompt and disconnect dialogs by immediately calling the callback when
+    // it is asked to be shown.
+    // For the disconnect prompt, this results in the session ending immediately when the user hits
+    // the close button. Be careful to ensure that the correct values are passed to the callback;
+    // passing false for the "positive" argument here would result in the user being unable to end
+    // the session.
+    if (type == Type.CONNECT_PROMPT || type == Type.DISCONNECT_PROMPT) {
       listener.onSelectionMade(type, true, activity);
       return;
     }
@@ -46,10 +50,10 @@ public class ExampleDialogPresenter extends SosDefaultDialogPresenter {
   }
 
   /**
-   * @{inheritDoc}
+   * {@inheritDoc}
    */
   @Override
-  public void setMessage(Type type, Activity activity, int resourceId) {
+  public void setMessage (Type type, Activity activity, int resourceId) {
     // Update our snackbar on the main activity.
     if (type == Type.CONNECTING_STATUS) {
       setSnackbarMessage(resourceId);
@@ -63,10 +67,10 @@ public class ExampleDialogPresenter extends SosDefaultDialogPresenter {
   }
 
   /**
-   * @{inheritDoc}
+   * {@inheritDoc}
    */
   @Override
-  public void dismiss(Type type, Activity activity) {
+  public void dismiss (Type type, Activity activity) {
     // Remove our snackbar on the main activity.
     if (type == Type.CONNECTING_STATUS) {
       dismissSnackbar();
@@ -81,14 +85,14 @@ public class ExampleDialogPresenter extends SosDefaultDialogPresenter {
 
   // Snackbar methods.
 
-  private void showSnackbar(final Activity activity, final OnSelectionListener listener) {
+  private void showSnackbar (final Activity activity, final OnSelectionListener listener) {
     // Get the message from the type.
     String message = Type.CONNECTING_STATUS.getMessage(activity);
 
     Snackbar snackbar = Snackbar.make(activity.findViewById(R.id.start_sos), message, Snackbar.LENGTH_INDEFINITE);
     snackbar.setAction(R.string.sos_connect_negative, new View.OnClickListener() {
       @Override
-      public void onClick(View v) {
+      public void onClick (View v) {
         listener.onSelectionMade(Type.CONNECTING_STATUS, false, activity);
       }
     });
@@ -97,14 +101,14 @@ public class ExampleDialogPresenter extends SosDefaultDialogPresenter {
     sSnackbar = new WeakReference<>(snackbar);
   }
 
-  private void setSnackbarMessage(int resourceId) {
+  private void setSnackbarMessage (int resourceId) {
     Snackbar snackbar = sSnackbar.get();
     if (snackbar != null) {
       snackbar.setText(resourceId);
     }
   }
 
-  private void dismissSnackbar() {
+  private void dismissSnackbar () {
     Snackbar snackbar = sSnackbar.get();
     if (snackbar != null) {
       snackbar.dismiss();
