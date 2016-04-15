@@ -28,7 +28,7 @@ flavors:
 
 - `simple`: Demonstrates connecting to an SOS session with the minimum possible amount of integration. There is no customization of the built-in SOS experience.
 - `basic`: Demonstrates some basic configuration of the SOS experience using resource files to override the resources present in the SOS library. This is an easy mechanism for changing the default content without affecting behaviour.
-- `advanced`: Demonstrates the new Halo UI and overrides some portions of the SOS logic with custom code. This gives the application greater freedom to customize the SOS experience, but has a higher integration cost and increased level of responsibility for the application developer. This flavour also demonstrates branding colors by overriding XML resources.
+- `advanced`: Overrides some portions of the SOS logic with custom code. This gives the application greater freedom to customize the SOS experience, but has a higher integration cost and increased level of responsibility for the application developer. This flavour also demonstrates branding colors by overriding XML resources.
 - `twoWayVideo`: Enables the two-way video call feature in SOS. The user will be presented with camera toggle button on the Agent Container.
 - `fieldServices`: Launches the SOS session in field services mode, where only the front and back cameras are available (no screen sharing).
 
@@ -66,11 +66,9 @@ The `advanced` flavor includes some of the basic configuration done in the above
 - Bypass the disconnection confirmation prompt (the user will not be prompted when choosing to disconnect).
 - Use a snackbar for showing the connection status on the MainActivity.
 
-The Advanced flavor uses the new Halo UI, which is currently in beta, and overrides more XML color resources for complete branding customization.
-
 ### Two-way Video
 
-The `twoWayVideo` flavor includes the Halo UI with the addition of the camera toggle button. This allows the user to escalate a screen-sharing session to a video call.
+The `twoWayVideo` flavor enables the camera toggle button during a session. This allows the user to escalate a screen-sharing session to a video call.
 
 ### FieldServices
 
