@@ -57,7 +57,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.salesforce.android:sos:1.3.0'
+    compile 'com.salesforce.android:sos:1.4.0'
 
     compile 'com.android.support:design:23.3.0'
 }
