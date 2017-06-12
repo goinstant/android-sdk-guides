@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+  <issue id="InvalidPackage">
+    <!--Ignore InvalidPackage error for okio. Known issue which will resolve itself on O. See https://github.com/square/okio/issues/58 -->
+    <ignore regexp=".*okio.*"/>
+  </issue>
+</lint>

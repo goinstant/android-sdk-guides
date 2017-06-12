@@ -1,42 +1,53 @@
 <resources>
 
-    <!-- Branding Color Scheme -->
+  <!-- Branding Color Scheme -->
 
-    <color doc="Your brand's primary color."
-           name="sos_brand_primary">#1F75ED</color>
+  <color doc="Your brand's primary color."
+      name="salesforce_brand_primary">#1F75ED
+  </color>
 
-    <color doc="Your brand's secondary color. Used as the background color for action items. This may be the same as your primary brand color."
-           name="sos_brand_secondary">#ED971F</color>
+  <color doc="Your brand's secondary color. Used as the background color for action items. This may be the same as your primary brand color."
+      name="salesforce_brand_secondary">#ED971F
+  </color>
 
-    <color doc="A color that will contrast against your brand colors in order to provide high readability. Used for text on areas where a brand color is used as the background color."
-           name="sos_brand_contrast">#FCFC</color>
+  <color doc="A color that will contrast against your brand colors in order to provide high readability. Used for text on areas where a brand color is used as the background color."
+      name="salesforce_brand_contrast">#FCFC
+  </color>
 
-    <color doc="Used as the primary body text color and also used as a background color for buttons on the Halo UI Agent Container."
-           name="sos_contrast_primary">#333333</color>
+  <color doc="Used as the primary body text color and also used as a background color for buttons on the Halo UI Agent Container."
+      name="salesforce_contrast_primary">#333333
+  </color>
 
-    <color doc="Secondary contrast color."
-           name="sos_contrast_secondary">#767676</color>
+  <color doc="Secondary contrast color."
+      name="salesforce_contrast_secondary">#767676
+  </color>
 
-    <color doc="Tertiary contrast color."
-           name="sos_contrast_tertiary">#F4F4F4</color>
+  <color doc="Tertiary contrast color."
+      name="salesforce_contrast_tertiary">#F4F4F4
+  </color>
 
-    <color doc="Quaternary contrast color."
-           name="sos_contrast_quaternary">#DFDFDF</color>
+  <color doc="Quaternary contrast color."
+      name="salesforce_contrast_quaternary">#DFDFDF
+  </color>
 
-    <color doc="Used as the body background color and also used for the colors of the icons on the Halo UI Agent Container. This is meant to be an inverse shade of the brand contrast color."
-           name="sos_contrast_inverted">#FFFFFF</color>
+  <color doc="Used as the body background color and also used for the colors of the icons on the Halo UI Agent Container. This is meant to be an inverse shade of the brand contrast color."
+      name="salesforce_contrast_inverted">#FFFFFF
+  </color>
 
-    <color doc="Primary feedback color."
-           name="sos_feedback_primary">#E74C3C</color>
+  <color doc="Primary feedback color."
+      name="salesforce_feedback_primary">#E74C3C
+  </color>
 
-    <color doc="Secondary feedback color."
-           name="sos_feedback_secondary">#2ECC71</color>
+  <color doc="Secondary feedback color."
+      name="salesforce_feedback_secondary">#2ECC71
+  </color>
 
-    <color doc="Tertiary feedback color."
-           name="sos_feedback_tertiary">#F5A623</color>
+  <color doc="Tertiary feedback color."
+      name="salesforce_feedback_tertiary">#F5A623
+  </color>
 
-    <!-- Drawing color -->
+  <!-- Drawing color -->
 
-    <color name="sos_drawing_color">@color/sos_feedback_primary</color>
+  <color name="sos_drawing_color">@color/salesforce_feedback_primary</color>
 
 </resources>
