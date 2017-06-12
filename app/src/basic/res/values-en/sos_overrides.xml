@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <!-- Change the title bar for the connect/disconnect dialogs -->
-    <string name="sos_title">SOS Basic Example</string>
-    <string name="sos_connect_prompt">This is a custom message set in the application\'s resource folder.</string>
-
-
-</resources>

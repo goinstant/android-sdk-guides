@@ -2,62 +2,57 @@ apply plugin: 'com.android.application'
 apply plugin: 'maven'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+  compileSdkVersion 25
+  buildToolsVersion "25.0.2"
 
-    defaultConfig {
-        applicationId "com.salesforce.androidsosguides"
-        minSdkVersion 14
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+  defaultConfig {
+    applicationId "com.salesforce.androidsosguides"
+    minSdkVersion 19
+    targetSdkVersion 25
+    versionCode 1
+    versionName "1.0"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    productFlavors {
+  }
+  lintOptions {
+    // Add a lint config to ignore okhttp invalid package errors.
+    lintConfig rootProject.file('gradle/lint.xml')
+  }
+  productFlavors {
 
-        // The simple flavor shows the bare minimum work needed to integrate SOS into an
-        // application, with no customization of the out-of-the-box experience.
-        simple {
+    // The simple flavor shows the bare minimum work needed to integrate SOS into an
+    // application, with no customization of the out-of-the-box experience.
+    simple {}
 
-        }
+    // The basic flavor demonstrates an SOS integration with some basic customization including
+    // overriding resources to tailor SOS to the application.
+    basic {}
 
-        // The basic flavor demonstrates an SOS integration with some basic customization including
-        // overriding resources to tailor SOS to the application.
-        basic {
+    // The advanced flavor demonstrates more involved customization including replacing portions
+    // of logic and color branding for a more tightly integrated experience.
+    advanced {}
 
-        }
+    // The two-way video flavour allows the user to transition from a screen sharing session
+    // to a video call session by exposing a Camera button on the Halo UI.
+    twoWayVideo {}
 
-        // The advanced flavor demonstrates more involved customization including replacing portions
-        // of logic and color branding for a more tightly integrated experience.
-        advanced {
-
-        }
-
-        // The two-way video flavour allows the user to transition from a screen sharing session
-        // to a video call session by exposing a Camera button on the Halo UI.
-        twoWayVideo {
-
-        }
-
-        // The field service flavor demonstrates using SOS in field services mode, where only the
-        // cameras are available.
-        fieldService {
-
-        }
-    }
+    // The field service flavor demonstrates using SOS in field services mode, where only the
+    // cameras are available.
+    fieldService {}
+  }
 }
 
 repositories {
-    maven { url 'http://salesforcesos.com/android/maven/sos/sdk/release' }
+  maven { url 'https://salesforcesos.com/android/maven/release' }
+  maven { url 'http://tokbox.bintray.com/maven/' }
 }
 
 dependencies {
-    compile 'com.salesforce.android:sos:1.4.0'
+  compile 'com.salesforce.service:sos:2.1.2'
 
-    compile 'com.android.support:design:23.3.0'
+  compile 'com.android.support:design:25.3.1'
 }
